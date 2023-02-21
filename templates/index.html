@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edmonton Real Estate Predictor</title>
+    <link rel="stylesheet" href="{{ url_for('static',filename='index/index.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename="generalCSS/typedOutText.css") }}"/>
+    <link rel="stylesheet" href="{{ url_for('static',filename="generalCSS/fadeIn.css") }}"/>
+    <link rel="stylesheet" href="{{ url_for('static',filename="generalCSS/scrollBar.css") }}"/>
+    <script src="{{ url_for('static',filename='generalJS/onVis.js') }}"></script>
+
+    <link rel="icon" href="{{ url_for('static',filename='res/tabicon.png') }}">
+</head>
+<body>
+
+
+<div id="headingDiv">
+    <p id="headingText" class="typedOutText">Edmonton Real Estate Price Predictor</p>
+</div>
+
+<div id="edmImgDiv" class="fadeInVis">
+    <img id="edmImg" class="fadeInVis" src="{{ url_for('static', filename="res/edmontonphoto.jpeg") }}"
+         alt="City Of Edmonton Photo">
+</div>
+
+<div class="basicDiv fadeInVis">
+    <p class="basicText">With the ever increasing complexity of the real estate market, it seems the average
+        consumer have little to no understanding on how various properties are valued. This is particularly true
+        for the City of Edmonton, a city that is seeing a rapid increase in population and property values.
+    </p>
+
+    <p class="basicText">
+        With the help of Machine Learning technologies, and data collected from <a href="https://www.edmontonrealestate.pro/">
+        Edmonton Real Estate Pro</a> we are able to predict the price of properties
+        in edmonton, with a <strong>accuracy of 92% (Data from 2022-02-15).</strong>
+    </p>
+
+    <p>
+        <em>Please use this tool responsibly, and understand that these predictions are not 100% accurate.</em>
+
+    </p>
+
+</div>
+
+
+<form method="post">
+
+    <div class="fadeInVis basicDiv">
+
+        <div>
+            <div class="inputDiv">
+                <label for="bedroomNum">Number Of Bedrooms</label><input type="text" id="bedroomNum" name="Bedrooms">
+            </div>
+
+            <div class="inputDiv">
+                <label for="bathroomNum">Number Of Bathrooms</label><input type="text" id="bathroomNum"
+                                                                           name="Bathrooms">
+            </div>
+        </div>
+
+
+        <div>
+            <div class="inputDiv">
+                <label for="garageNumber">Number Of Garages</label><input type="text" id="garageNumber"
+                                                                          name="# of Garages">
+            </div>
+
+            <div class="inputDiv">
+                <label for="squareFootage">Total Square Footage</label><input type="text" id="squareFootage"
+                                                                              name="Square Footage">
+            </div>
+        </div>
+
+        <div>
+            <div class="inputDiv">
+                <label for="propAcres">Property Acres</label><input type="text" id="propAcres" name="Acres">
+            </div>
+            <div class="inputDiv">
+                <label for="numOfStories">Number Of Stories</label><input type="text" id="numOfStories"
+                                                                          name="# of Stories">
+            </div>
+        </div>
+
+        <div>
+            <div class="inputDiv">
+                <label for="houseFee">Extra House Fees</label><input type="text" id="houseFee" name="House Fee">
+            </div>
+            <div class="inputDiv">
+                <label for="constructionType">Construction Type</label>
+                <select id="constructionType" name="Construction">
+                    <option value="concrete">Concrete</option>
+                    <option value="wood frame">Wood Frame</option>
+                    <option value="brick">Brick</option>
+                    <option value="steel frame">Steel Frame</option>
+                </select>
+            </div>
+        </div>
+
+
+        <div class="inputDiv">
+            <label for="foundationType">Foundation Type</label>
+            <select id="foundationType" name="Foundation">
+                <option value="concrete">Concrete</option>
+                <option value="wood">Wood</option>
+                <option value="block">Block</option>
+            </select>
+        </div>
+
+    </div>
+
+
+    <div class="fadeInVis basicDiv">
+
+
+        <div>
+            <div class="inputDiv">
+                <label for="houseYear">Year House Built</label><input type="text" id="houseYear" name="Year Built">
+            </div>
+
+            <div class="inputDiv">
+                <label for="houseType">House Type</label>
+                <select id="houseType" name="Type">
+                    <option value="condo / townhouse">Condo / Townhouse</option>
+                    <option value="single family">Detached Single Family</option>
+                </select>
+            </div>
+
+        </div>
+
+        <div>
+
+            <div class="inputDiv">
+                <label for="houseSubType">House Sub-Type</label>
+                <select id="houseSubType" name="Sub-Type">
+                    <option value="residential detached single family">residential detached single family</option>
+                    <option value="lowrise apartment">Lowrise Apartment</option>
+                    <option value="half duplex">Half Duplex</option>
+                    <option value="townhouse">Townhouse</option>
+                    <option value="apartment high rise">Apartment High Rise</option>
+                    <option value="residential attached">Residential Attached</option>
+                    <option value="carriage">Carriage</option>
+                    <option value="4plex">4PlEX</option>
+                    <option value="duplex front and back">Duplex Front and Back</option>
+                    <option value="duplex up and down">Duplex Up and Down</option>
+                    <option value="tri-plex">Tri-Plex</option>
+                </select>
+            </div>
+
+
+            <div class="inputDiv">
+                <label for="houseStyle">House Style</label>
+                <select id="houseStyle" name="Style">
+                    <option value="bungalow">Bungalow</option>
+                    <option value="raised bungalow">Bi-Level</option>
+                    <option value="hillside bungalow">Hillside Bungalow</option>
+                    <option value="bi-level">bi-level</option>
+                    <option value="4 level split">4 level split</option>
+                    <option value="5 level split">5 level split</option>
+                    <option value="3 level split">3 level split</option>
+                    <option value="2 storey split">2 storey split</option>
+                    <option value="2 storey">2 storey</option>
+                    <option value="3 storey">3 storey</option>
+                    <option value="2 and half storey">2 and half storey</option>
+                    <option value="single level apartment">single level apartment</option>
+                    <option value="multi level apartment">multi level apartment</option>
+                    <option value="loft">loft</option>
+                    <option value="penthouse">penthouse</option>
+                </select>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="fadeInVis basicDiv">
+
+        <div>
+            <div class="inputDiv">
+                <label for="hasWaterfront">Is Waterfront</label>
+                <input type="checkbox" id="hasWaterfront" name="Is Waterfront" value="1">
+                <input type="hidden" name="Is Waterfront" value="0">
+
+            </div>
+
+            <div class="inputDiv">
+                <label for="hasPool">Has Pool</label>
+                <input type="checkbox" id="hasPool" name="Has Pool" value="1">
+                <input type="hidden" name="Has Pool" value="0">
+            </div>
+        </div>
+
+        <div>
+            <div class="inputDiv">
+                <label for="hasFireplace">Has Fireplace</label>
+                <input type="checkbox" id="hasFireplace" name="Fireplace" value="1">
+                <input  type='hidden' value='0' name='Fireplace'>
+            </div>
+
+            <div class="inputDiv">
+                <label for="hasBasement">Has Basement</label>
+                <input type="checkbox" id="hasBasement" name="Has Basement" value="1">
+                <input type="hidden" name="Has Basement" value="0">
+            </div>
+
+        </div>
+
+        <div>
+            <div class="inputDiv">
+                <label for="hasSeparateEntrance">Has Separate Entrance</label>
+                <input type="checkbox" id="hasSeparateEntrance" name="Separate Entrance" value="1">
+                <input type="hidden" name="Separate Entrance" value="0">
+            </div>
+
+
+            <div class="inputDiv">
+                <label for="REOrBankOwned">REO or Bank Owned</label>
+                <input type="checkbox" id="REOrBankOwned" name="RE / Bank Owned" value="1">
+                <input type='hidden' value='0' name='RE / Bank Owned'>
+
+            </div>
+        </div>
+
+        <div class="inputDiv">
+            <label for="isRenov">Renovated</label>
+            <input type="checkbox" id="isRenov" name="Renovated" value="1">
+            <input type='hidden' value='0' name='Renovated'>
+
+        </div>
+
+
+    </div>
+
+    <div class="fadeInVis basicDiv">
+        <div>
+            <div class="inputDiv">
+                <label for="community">Surrounding Neighborhood</label>
+                <input type="text" id="community" name="community">
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="fadeInVis basicDiv">
+
+            <div class="inputDiv">
+                <button type="submit">Predict</button>
+            </div>
+
+        {% if prediction %}
+            <div class="inputDiv">
+                <h3>Prediction: {{ prediction - (prediction * 0.1) }}</h3>
+            </div>
+        {% endif %}
+    </div>
+
+
+
+</form>
+</body>
+</html>
